@@ -3,16 +3,12 @@ package org.community.bigdata.workshop.sparkintro.movielens.processing;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
-import org.apache.spark.api.java.function.Function;
-import org.apache.spark.network.protocol.Encoders;
 import org.community.bigdata.workshop.sparkintro.movielens.functions.MovieConvertion;
 import org.community.bigdata.workshop.sparkintro.movielens.functions.RatingConvertion;
 import org.community.bigdata.workshop.sparkintro.movielens.functions.UserConversion;
 import org.community.bigdata.workshop.sparkintro.movielens.model.Movie;
 import org.community.bigdata.workshop.sparkintro.movielens.model.Rating;
 import org.community.bigdata.workshop.sparkintro.movielens.model.User;
-
-import java.util.List;
 
 /**
  * Created by tudor on 12/6/2015.

@@ -4,6 +4,7 @@ import org.apache.spark.api.java.function.Function;
 import org.community.bigdata.workshop.sparkintro.movielens.model.User;
 
 /**
+ * This function convert a user string line into a {@link User} object
  * Created by tudor on 12/6/2015.
  */
 public class UserConversion implements Function<String, User> {
