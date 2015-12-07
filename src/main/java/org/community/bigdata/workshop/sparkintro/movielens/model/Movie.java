@@ -2,7 +2,8 @@ package org.community.bigdata.workshop.sparkintro.movielens.model;
 
 import java.util.Date;
 
-/** Contains information about a movie, like id, title, release date, video release date, imdb url and genres
+/**
+ * Contains information about a movie, like id, title, release date, video release date, imdb url and genres
  * Created by tudor on 12/6/2015.
  */
 public class Movie {

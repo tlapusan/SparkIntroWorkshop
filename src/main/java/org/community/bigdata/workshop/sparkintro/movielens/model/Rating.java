@@ -4,7 +4,7 @@ package org.community.bigdata.workshop.sparkintro.movielens.model;
  * Created by tudor on 12/6/2015.
  */
 public class Rating {
-//    user id | item id | rating | timestamp
+    //    user id | item id | rating | timestamp
     private int userId;
     private int movieId;
     private float rating;

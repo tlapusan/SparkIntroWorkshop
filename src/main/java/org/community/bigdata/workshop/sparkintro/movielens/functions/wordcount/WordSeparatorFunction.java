@@ -11,7 +11,7 @@ public class WordSeparatorFunction implements FlatMapFunction<String, String> {
 
     private String delimiter;
 
-    public WordSeparatorFunction(String delimiter){
+    public WordSeparatorFunction(String delimiter) {
         this.delimiter = delimiter;
     }
 

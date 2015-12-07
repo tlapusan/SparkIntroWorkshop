@@ -1,4 +1,4 @@
-package org.community.bigdata.workshop.sparkintro.movielens.functions;
+package org.community.bigdata.workshop.sparkintro.movielens.functions.conversion;
 
 import org.apache.spark.api.java.function.Function;
 import org.community.bigdata.workshop.sparkintro.movielens.model.Movie;
@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  * This function convert a movie string line into a {@link Movie} object
- *
+ * <p/>
  * Created by tudor on 12/6/2015.
  */
 public class MovieConvertion implements Function<String, Movie> {

@@ -1,4 +1,4 @@
-package org.community.bigdata.workshop.sparkintro.movielens.functions;
+package org.community.bigdata.workshop.sparkintro.movielens.functions.conversion;
 
 import org.apache.spark.api.java.function.Function;
 import org.community.bigdata.workshop.sparkintro.movielens.model.User;

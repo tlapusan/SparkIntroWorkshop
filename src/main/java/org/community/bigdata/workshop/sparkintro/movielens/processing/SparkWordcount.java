@@ -24,8 +24,16 @@ public class SparkWordcount {
         JavaPairRDD<String, Integer> wordPairs = words.mapToPair(new WordPairFunction());
         JavaPairRDD<String, Integer> wordcounts = wordPairs.reduceByKey(new WordcountFunction());
 
-        for(Tuple2<String, Integer> record : wordcounts.take(100)){
+        System.out.println(wordcounts.count());
+//        wordcounts.saveAsObjectFile("data/movielens/output/2/users_worcount");
+        for (Tuple2<String, Integer> record : wordcounts.take(100)) {
             System.out.println(record._1() + ", " + record._2());
+        }
+
+        try {
+            Thread.sleep(100000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }
