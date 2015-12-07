@@ -54,19 +54,19 @@ public class SparkDriver {
             System.out.println(tuple2._1() + ", " + tuple2._2()._1() + ", " + tuple2._2()._2());
         }
 
-//
-//        for (Movie movie : movies.take(10)) {
-//            System.out.println(movie);
-//        }
-//
-//        for (Rating rating : ratings.take(10)) {
-//            System.out.println("rating : " + rating);
-//        }
 
-//        try {
-//            Thread.sleep(100000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+        for (Movie movie : movies.take(10)) {
+            System.out.println(movie);
+        }
+
+        for (Rating rating : ratings.take(10)) {
+            System.out.println("rating : " + rating);
+        }
+
+        try {
+            Thread.sleep(100000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
