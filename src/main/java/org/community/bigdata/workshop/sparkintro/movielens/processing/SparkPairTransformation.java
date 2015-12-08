@@ -18,9 +18,9 @@ import java.util.List;
 /**
  * Created by tudor on 12/6/2015.
  */
-public class SparkDriver {
+public class SparkPairTransformation {
     public static void main(String[] args) {
-        SparkConf conf = new SparkConf().setMaster("local[4]").setAppName("SparkDriver");
+        SparkConf conf = new SparkConf().setMaster("local[4]").setAppName("SparkPairTransformation");
         conf.set("spark.serializer", "org.apache.spark.serializer.KryoSerializer");
         JavaSparkContext sc = new JavaSparkContext(conf);
 
@@ -38,7 +38,6 @@ public class SparkDriver {
                 return new Tuple2<Integer, User>(user.getId(), user);
             }
         });
-
         JavaPairRDD<Integer, Rating> ratingPairRDD = ratings.mapToPair(new PairFunction<Rating, Integer, Rating>() {
             @Override
             public Tuple2<Integer, Rating> call(Rating rating) throws Exception {
@@ -47,22 +46,9 @@ public class SparkDriver {
         });
 
         JavaPairRDD<Integer, Tuple2<User, Rating>> join = userPairRDD.join(ratingPairRDD);
-
-        List<Tuple2<Integer, Tuple2<User, Rating>>> tuple2s = join.take(300);
-
-        for (Tuple2<Integer, Tuple2<User, Rating>> tuple2 : tuple2s) {
+        for (Tuple2<Integer, Tuple2<User, Rating>> tuple2 : join.take(1000)) {
             System.out.println(tuple2._1() + ", " + tuple2._2()._1() + ", " + tuple2._2()._2());
         }
-
-
-        for (Movie movie : movies.take(10)) {
-            System.out.println(movie);
-        }
-
-        for (Rating rating : ratings.take(10)) {
-            System.out.println("rating : " + rating);
-        }
-
         try {
             Thread.sleep(100000);
         } catch (InterruptedException e) {
