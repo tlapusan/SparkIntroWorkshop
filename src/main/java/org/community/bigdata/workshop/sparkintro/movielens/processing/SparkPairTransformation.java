@@ -13,8 +13,6 @@ import org.community.bigdata.workshop.sparkintro.movielens.model.Rating;
 import org.community.bigdata.workshop.sparkintro.movielens.model.User;
 import scala.Tuple2;
 
-import java.util.List;
-
 /**
  * Created by tudor on 12/6/2015.
  */
