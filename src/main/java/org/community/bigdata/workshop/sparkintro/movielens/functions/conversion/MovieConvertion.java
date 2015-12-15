@@ -28,6 +28,7 @@ public class MovieConvertion implements Function<String, Movie> {
         try {
             return formatter.parse(value);
         } catch (ParseException e) {
+            System.err.println("ParseException for value : " + value);
             e.printStackTrace();
         }
         return null;
