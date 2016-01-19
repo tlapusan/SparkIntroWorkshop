@@ -4,6 +4,7 @@ import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.api.java.function.Function;
+import org.apache.spark.storage.StorageLevel;
 import org.community.bigdata.workshop.sparkintro.movielens.functions.conversion.UserConversion;
 import org.community.bigdata.workshop.sparkintro.movielens.model.User;
 
@@ -43,6 +44,12 @@ public class MapTransformation {
         }
         for (User user : userJavaRDDMap.take(10)) {
             System.out.println(user);
+        }
+
+        try {
+            Thread.sleep(100000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }

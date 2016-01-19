@@ -43,6 +43,7 @@ public class SparkPairTransformation {
             }
         });
 
+        userPairRDD.join(ratingPairRDD);
         JavaPairRDD<Integer, Tuple2<User, Rating>> join = userPairRDD.join(ratingPairRDD);
         for (Tuple2<Integer, Tuple2<User, Rating>> tuple2 : join.take(1000)) {
             System.out.println(tuple2._1() + ", " + tuple2._2()._1() + ", " + tuple2._2()._2());
