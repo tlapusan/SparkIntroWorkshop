@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  * This function convert a movie string line into a {@link Movie} object
- * <p/>
+ * <p>
  * Created by tudor on 12/6/2015.
  */
 public class MovieConvertion implements Function<String, Movie> {

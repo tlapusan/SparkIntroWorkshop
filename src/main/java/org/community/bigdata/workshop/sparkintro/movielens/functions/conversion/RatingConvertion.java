@@ -5,7 +5,7 @@ import org.community.bigdata.workshop.sparkintro.movielens.model.Rating;
 
 /**
  * This function convert a rating string line into a {@link Rating} object
- * <p/>
+ * <p>
  * Created by tudor on 12/6/2015.
  */
 public class RatingConvertion implements Function<String, Rating> {

@@ -9,7 +9,7 @@ import org.community.bigdata.workshop.sparkintro.movielens.model.User;
 
 /**
  * This class illustrates Spark filter transformation and few Spark actions
- * <p/>
+ * <p>
  * Created by tudor on 12/7/2015.
  */
 public class FilterTransformation {
