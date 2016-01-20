@@ -22,6 +22,7 @@ public class MaleFamale {
 
         JavaRDD<User> users = sc.textFile("data/movielens/input/users").map(new UserConversion());
 
+
         JavaRDD<User> male = users.filter(new Function<User, Boolean>() {
             @Override
             public Boolean call(User user) throws Exception {
