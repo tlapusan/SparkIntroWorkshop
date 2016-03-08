@@ -4,6 +4,7 @@ import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
+import org.apache.spark.storage.StorageLevel;
 import org.community.bigdata.workshop.sparkintro.movielens.functions.wordcount.WordPairFunction;
 import org.community.bigdata.workshop.sparkintro.movielens.functions.wordcount.WordSeparatorFunction;
 import org.community.bigdata.workshop.sparkintro.movielens.functions.wordcount.WordcountFunction;
@@ -28,6 +29,9 @@ public class SparkWordcount {
 
         // count the frequency for each word (wordcount)
         JavaPairRDD<String, Integer> wordcounts = wordPairs.reduceByKey(new WordcountFunction());
+
+        // persist the RDD
+        wordcounts.persist(StorageLevel.MEMORY_AND_DISK());
 
         // display results
         System.out.println(wordcounts.count());

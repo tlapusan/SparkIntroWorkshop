@@ -4,6 +4,7 @@ import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.api.java.function.Function;
+import org.apache.spark.storage.StorageLevel;
 import org.community.bigdata.workshop.sparkintro.movielens.functions.conversion.UserConversion;
 import org.community.bigdata.workshop.sparkintro.movielens.model.User;
 
@@ -33,6 +34,10 @@ public class MapTransformation {
             }
         });
 
+        // persist the RDD
+        userJavaRDD.persist(StorageLevel.MEMORY_AND_DISK());
+        userJavaRDDMap.persist(StorageLevel.MEMORY_AND_DISK());
+
         // return the first element from original and incremented RDD
         System.out.println(userJavaRDD.first());
         System.out.println(userJavaRDDMap.first());
@@ -43,6 +48,12 @@ public class MapTransformation {
         }
         for (User user : userJavaRDDMap.take(10)) {
             System.out.println(user);
+        }
+
+        try {
+            Thread.sleep(1000 * 60 * 10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }

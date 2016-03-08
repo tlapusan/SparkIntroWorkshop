@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * Create a RDD from an external data source.
- *
+ * <p>
  * Created by tudorl on 23/01/16.
  */
 public class RDDExternalSourceSample {

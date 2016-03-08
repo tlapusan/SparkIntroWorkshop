@@ -5,10 +5,8 @@ import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.api.java.function.PairFunction;
-import org.community.bigdata.workshop.sparkintro.movielens.functions.conversion.MovieConvertion;
 import org.community.bigdata.workshop.sparkintro.movielens.functions.conversion.RatingConvertion;
 import org.community.bigdata.workshop.sparkintro.movielens.functions.conversion.UserConversion;
-import org.community.bigdata.workshop.sparkintro.movielens.model.Movie;
 import org.community.bigdata.workshop.sparkintro.movielens.model.Rating;
 import org.community.bigdata.workshop.sparkintro.movielens.model.User;
 import scala.Tuple2;
@@ -29,7 +27,6 @@ public class SparkPairTransformation {
 
         // create RDDs from above raw RDDs
         JavaRDD<User> users = user_records.map(new UserConversion());
-        JavaRDD<Movie> movies = movie_records.map(new MovieConvertion());
         JavaRDD<Rating> ratings = rating_records.map(new RatingConvertion());
 
         // create paired user RDD like (user_id, user)

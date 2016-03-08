@@ -3,6 +3,7 @@ package org.community.bigdata.workshop.sparkintro.movielens.processing.basics;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
+import org.apache.spark.storage.StorageLevel;
 import org.community.bigdata.workshop.sparkintro.movielens.functions.basics.FilterUserFunction;
 import org.community.bigdata.workshop.sparkintro.movielens.functions.conversion.UserConversion;
 import org.community.bigdata.workshop.sparkintro.movielens.model.User;
@@ -26,6 +27,9 @@ public class FilterTransformation {
         // return a new RDD made from only the Users for each function call return true
         JavaRDD<User> administrators = userJavaRDD.filter(new FilterUserFunction("administrator"));
 
+        // persist the RDD
+        administrators.persist(StorageLevel.MEMORY_AND_DISK());
+
         // return the administrators RDD as a list to the driver program and display it to console
         for (User user : administrators.collect()) {
             System.out.println(user);
@@ -33,5 +37,11 @@ public class FilterTransformation {
 
         // display the total number of administrators
         System.out.println(administrators.count());
+
+        try {
+            Thread.sleep(1000 * 60 * 10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

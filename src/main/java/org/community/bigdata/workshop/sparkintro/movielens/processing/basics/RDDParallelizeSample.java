@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * Create a RDD using an internal Java list.
- *
+ * <p>
  * Created by tudorl on 23/01/16.
  */
 public class RDDParallelizeSample {
