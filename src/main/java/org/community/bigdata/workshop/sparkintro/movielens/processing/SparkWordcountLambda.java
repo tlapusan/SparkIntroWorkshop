@@ -16,12 +16,12 @@ public class SparkWordcountLambda {
         SparkConf conf = new SparkConf().setMaster("local[4]").setAppName(SparkWordcount.class.getSimpleName());
         JavaSparkContext sc = new JavaSparkContext(conf);
 
+        // same as SparkWordcount but with lambda expressions
         JavaRDD<String> records = sc.textFile("data/movielens/input/users");
         JavaRDD<String> words = records.flatMap(line -> Arrays.asList(line.split("\\|")));
         JavaPairRDD<String, Integer> wordcounts = words.mapToPair(w -> new Tuple2<String, Integer>(w, 1)).reduceByKey((x, y) -> x + y);
 
         System.out.println(wordcounts.count());
-//        wordcounts.saveAsObjectFile("data/movielens/output/2/users_worcount");
         for (Tuple2<String, Integer> record : wordcounts.take(10)) {
             System.out.println(record._1() + ", " + record._2());
         }

@@ -17,6 +17,7 @@ public class RDDExternalSourceSample {
         conf.set("spark.serializer", "org.apache.spark.serializer.KryoSerializer");
         JavaSparkContext sc = new JavaSparkContext(conf);
 
+        // create an RDD from an external data source (ex. local filesystem)
         JavaRDD<String> userLineRDD = sc.textFile("data/movielens/input/users");
 
         List<String> userLines = userLineRDD.take(100);

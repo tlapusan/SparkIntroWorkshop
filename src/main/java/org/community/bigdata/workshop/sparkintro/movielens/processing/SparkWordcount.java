@@ -17,13 +17,20 @@ public class SparkWordcount {
         SparkConf conf = new SparkConf().setMaster("local[4]").setAppName(SparkWordcount.class.getSimpleName());
         JavaSparkContext sc = new JavaSparkContext(conf);
 
+        // create an String RDD from user file
         JavaRDD<String> records = sc.textFile("data/movielens/input/users");
+
+        // create a new RDD with all the words from above RDD
         JavaRDD<String> words = records.flatMap(new WordSeparatorFunction("\\|"));
+
+        // create a paired RDD like (word, 1)
         JavaPairRDD<String, Integer> wordPairs = words.mapToPair(new WordPairFunction());
+
+        // count the frequency for each word (wordcount)
         JavaPairRDD<String, Integer> wordcounts = wordPairs.reduceByKey(new WordcountFunction());
 
+        // display results
         System.out.println(wordcounts.count());
-//        wordcounts.saveAsObjectFile("data/movielens/output/2/users_worcount");
         for (Tuple2<String, Integer> record : wordcounts.take(10)) {
             System.out.println(record._1() + ", " + record._2());
         }

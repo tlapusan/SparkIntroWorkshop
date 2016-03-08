@@ -19,9 +19,11 @@ public class RDDParallelizeSample {
         conf.set("spark.serializer", "org.apache.spark.serializer.KryoSerializer");
         JavaSparkContext sc = new JavaSparkContext(conf);
 
+        // create a List of Characters
         List<Character> characterList = new ArrayList<Character>();
         characterList.addAll(Arrays.asList('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q'));
 
+        // create an RDD from an internal List using parallelize method
         JavaRDD<Character> characterRDD = sc.parallelize(characterList);
 
         System.out.println("list size : " + characterList.size());

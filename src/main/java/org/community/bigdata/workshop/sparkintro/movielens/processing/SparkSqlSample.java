@@ -19,12 +19,17 @@ public class SparkSqlSample {
         JavaSparkContext sc = new JavaSparkContext(conf);
         SQLContext sqlContext = new SQLContext(sc);
 
+        // create an RDD from raw user file
         JavaRDD<String> records = sc.textFile("/Users/tudorl/workspaces/community/bigdata/SparkIntroWorkshop/data/movielens/input/users");
         JavaRDD<User> users = records.map(new UserConversion());
 
+        // create a DataFrame based on user RDD and User class
         DataFrame schemaUser = sqlContext.createDataFrame(users, User.class);
+
+        // register the user tabel
         schemaUser.registerTempTable("user");
 
+        // performs SQL queries on the user table register above
         DataFrame administrators = sqlContext.sql("select * from user where occupation='administrator' sort by age");
         for (Row row : administrators.toJavaRDD().collect()) {
             System.out.println(row);

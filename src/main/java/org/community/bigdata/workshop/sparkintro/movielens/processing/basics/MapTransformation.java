@@ -33,7 +33,7 @@ public class MapTransformation {
             }
         });
 
-        // return the first element from RDD
+        // return the first element from original and incremented RDD
         System.out.println(userJavaRDD.first());
         System.out.println(userJavaRDDMap.first());
 
